@@ -1,151 +1,123 @@
 package com.cookandroid.studyplanner_project;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TimerActivity extends AppCompatActivity {
 
-    private TextView countdownText;  // timer current state
+    LinearLayout timeCountSettingLV, timeCountLV;
+    EditText hourET, minuteET, secondET;
+    TextView hourTV, minuteTV, secondTV, finishTV;
+    Button startBtn;
+    int hour, minute, second;
 
-    private Button startButton;  // Start Button
-    private Button stopButton;  // Stop Button
-    private Button cancelButton;  // Cancel Button
 
-    private EditText hourText;  // hour
-    private EditText minText;  // minute
-    private EditText secondText;  // second
 
-    private CountDownTimer countDownTimer;
-
-    private boolean timerRunning; // timer running (true, false)
-    private boolean firstState; // timer first running (true, false)
-
-    private long time = 0;
-    private long tempTime = 0;
-
-    FrameLayout setting;  // setting layout
-    FrameLayout timer;  // timer layout
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
-        // timer -> findViewById
-        countdownText = findViewById(R.id.countdown_text);
-        startButton = findViewById(R.id.countdown_button);
-        stopButton = findViewById(R.id.stop_button);
-        cancelButton = findViewById(R.id.cancel_button);
+        timeCountSettingLV = (LinearLayout)findViewById(R.id.timeCountSettingLV);
+        timeCountLV = (LinearLayout)findViewById(R.id.timeCountLV);
 
-        hourText = findViewById(R.id.hour);
-        minText = findViewById(R.id.min);
-        secondText = findViewById(R.id.second);
+        hourET = (EditText)findViewById(R.id.hourET);
+        minuteET = (EditText)findViewById(R.id.minuteET);
+        secondET = (EditText)findViewById(R.id.secondET);
 
-        setting = findViewById(R.id.setting);
-        timer = findViewById(R.id.timer);
+        hourTV = (TextView)findViewById(R.id.hourTV);
+        minuteTV = (TextView)findViewById(R.id.minuteTV);
+        secondTV = (TextView)findViewById(R.id.secondTV);
+        finishTV = (TextView)findViewById(R.id.finishTV);
 
-        // Define startButton
-        startButton.setOnClickListener(new View.OnClickListener() {
+        startBtn = (Button)findViewById(R.id.startBtn);
+
+        // 시작버튼 이벤트 1처리
+        startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                firstState = true;
-                setting.setVisibility(setting.GONE);
-                timer.setVisibility(timer.VISIBLE);
-                startStop();
+            public void onClick(View view) {
+
+                timeCountSettingLV.setVisibility(View.GONE);
+                timeCountLV.setVisibility(View.VISIBLE);
+
+                hourTV.setText(hourET.getText().toString());
+                minuteTV.setText(minuteET.getText().toString());
+                secondTV.setText(secondET.getText().toString());
+
+                hour = Integer.parseInt(hourET.getText().toString());
+                minute = Integer.parseInt(minuteET.getText().toString());
+                second = Integer.parseInt(secondET.getText().toString());
+
+                Timer timer = new Timer();
+                TimerTask timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        // 반복실행할 구문
+
+                        // 0초 이상이면
+                        if(second != 0) {
+                            //1초씩 감소
+                            second--;
+
+                            // 0분 이상이면
+                        } else if(minute != 0) {
+                            // 1분 = 60초
+                            second = 60;
+                            second--;
+                            minute--;
+
+                            // 0시간 이상이면
+                        } else if(hour != 0) {
+                            // 1시간 = 60분
+                            second = 60;
+                            minute = 60;
+                            second--;
+                            minute--;
+                            hour--;
+                        }
+
+                        //시, 분, 초가 10이하(한자리수) 라면
+                        // 숫자 앞에 0을 붙인다 ( 8 -> 08 )
+                        if(second <= 9){
+                            secondTV.setText("0" + second);
+                        } else {
+                            secondTV.setText(Integer.toString(second));
+                        }
+
+                        if(minute <= 9){
+                            minuteTV.setText("0" + minute);
+                        } else {
+                            minuteTV.setText(Integer.toString(minute));
+                        }
+
+                        if(hour <= 9){
+                            hourTV.setText("0" + hour);
+                        } else {
+                            hourTV.setText(Integer.toString(hour));
+                        }
+
+                        // 시분초가 다 0이라면 toast를 띄우고 타이머를 종료한다..
+                        if(hour == 0 && minute == 0 && second == 0) {
+                            timer.cancel();//타이머 종료
+                            finishTV.setText("타이머가 종료되었습니다.");
+                        }
+                    }
+                };
+
+                //타이머를 실행
+                timer.schedule(timerTask, 0, 1000); //Timer 실행
             }
         });
-
-
-        // Define stopButton
-        stopButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startStop();
-            }
-        });
-
-        // Define cancelButton
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setting.setVisibility(setting.VISIBLE);
-                timer.setVisibility(timer.GONE);
-                firstState = true;
-                stopTimer();
-            }
-
-        });
-        updateTimer();
-    }
-
-    // Define start and stop according to timer
-    private void startStop() {
-        if(timerRunning) {
-            stopTimer();
-        } else {
-            startTimer();
-        }
-    }
-
-    // Implement a timer
-    private void startTimer() {
-        if (firstState) {
-            String sHour = hourText.getText().toString();
-            String sMin = minText.getText().toString();
-            String sSecond = secondText.getText().toString();
-            time = (Long.parseLong(sHour) * 3600000) + (Long.parseLong(sMin) * 60000) + (Long.parseLong(sSecond) * 1000) + 1000;
-        } else {
-            time = tempTime;
-        }
-
-        countDownTimer = new CountDownTimer(time, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                tempTime = millisUntilFinished;
-                updateTimer();
-            }
-
-            @Override
-            public void onFinish() {
-            }
-        }.start();
-
-        stopButton.setText("일시정지");
-        timerRunning = true;
-        firstState = false;
-    }
-    // Define stopTimer
-    private void stopTimer() {
-        countDownTimer.cancel();
-        timerRunning = false;
-        stopButton.setText("계속");
-    }
-
-    // Update time
-    private void updateTimer() {
-        int hour = (int) tempTime / 3600000;
-        int minutes = (int) tempTime % 3600000 / 60000;
-        int seconds = (int) tempTime % 3600000 % 60000 / 1000;
-
-        String timeLeftText = "";
-
-        timeLeftText = "" + hour + ":";
-
-        if(minutes < 10) timeLeftText += "0";
-        timeLeftText += minutes + ":";
-
-        if(seconds < 10) timeLeftText += "0";
-        timeLeftText += seconds;
-
-        countdownText.setText(timeLeftText);
     }
 }
