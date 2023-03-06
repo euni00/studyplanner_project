@@ -1,0 +1,176 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/tdlayout1"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+
+        <CheckBox
+            android:id="@+id/tdCb1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView
+            android:id="@+id/tdMainTv1"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/edge"
+            android:hint="오늘의 할 일"/>
+
+        <Button
+            android:id="@+id/tdBtn1"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/tdlayout2"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+
+        <CheckBox
+            android:id="@+id/tdCb2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView
+            android:id="@+id/tdMainTv2"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/edge"
+            android:hint="오늘의 할 일"/>
+
+        <Button
+            android:id="@+id/tdBtn2"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/tdlayout3"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+
+        <CheckBox
+            android:id="@+id/tdCb3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView
+            android:id="@+id/tdMainTv3"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/edge"
+            android:hint="오늘의 할 일"/>
+        <Button
+            android:id="@+id/tdBtn3"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/tdlayout4"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+
+        <CheckBox
+            android:id="@+id/tdCb4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView
+            android:id="@+id/tdMainTv4"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/edge"
+            android:hint="오늘의 할 일"/>
+        <Button
+            android:id="@+id/tdBtn4"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/tdlayout5"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+
+        <CheckBox
+            android:id="@+id/tdCb5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView
+            android:id="@+id/tdMainTv5"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/edge"
+            android:hint="오늘의 할 일"/>
+        <Button
+            android:id="@+id/tdBtn5"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/tdlayout6"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+
+        <CheckBox
+            android:id="@+id/tdCb6"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"/>
+        <TextView
+            android:id="@+id/tdMainTv6"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/edge"
+            android:hint="오늘의 할 일"/>
+        <Button
+            android:id="@+id/tdBtn6"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="20sp"
+            android:layout_gravity="right|center_vertical"/>
+    </FrameLayout>
+
+</LinearLayout>

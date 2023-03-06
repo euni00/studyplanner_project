@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/menuUserInfo"
+        android:title="사용자 정보입력"/>
+     <item
+        android:id="@+id/menuHelp"
+        android:title="도움말"/>
+    <item
+        android:id="@+id/menuDevInfo"
+        android:title="개발자 정보"/>
+    <item
+        android:id="@+id/menuHome"
+        android:title="로그아웃"/>
+
+</menu>

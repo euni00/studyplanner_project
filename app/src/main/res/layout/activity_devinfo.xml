@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout"
+        >
+        <TextView
+            android:id="@+id/ssrName"
+            android:textSize="20dp"
+            android:textColor="#0000ff"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="201807602 서승률"/>
+        <TextView
+            android:id="@+id/ssrPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="메인화면 구현 및 각 기능 연결 / 전반적인 xml코드 구현"
+            android:layout_below="@id/ssrName"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+        <TextView
+            android:textSize="20dp"
+            android:textColor="#0000ff"
+            android:textStyle="bold"
+            android:id="@+id/lyeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="201907323 이예은"/>
+        <TextView
+            android:id="@+id/lyePart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="타이머와 스탑워치 xml, java 코드 구현 / 메뉴 구현"
+            android:layout_below="@id/lyeName"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge_layout">
+        <TextView
+            android:textSize="20dp"
+            android:textColor="#0000ff"
+            android:textStyle="bold"
+            android:id="@+id/cidName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="201807604 차일도"/>
+        <TextView
+            android:id="@+id/cidPart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="투두리스트 xml, java 코드 구현 / 대화상자 구현 / 메뉴 구현"
+            android:layout_below="@id/cidName"/>
+    </RelativeLayout>
+
+
+</LinearLayout>
